@@ -1,0 +1,35 @@
+{{ config(materialized='table') }}
+ 
+select
+    account_id,
+    name,
+    parent_id,
+    billing_city,
+    billing_state,
+    billing_postal_code,
+    billing_country,
+    billing_state_code,
+    billing_country_code,
+    phone,
+    website,
+    industry,
+    number_of_employees,
+    currency_code,
+    owner_id,
+    created_date,
+    created_by_id,
+    last_activity_date,
+    sf_18_digit_id,
+    capital_iq_id,
+    channel,
+    client_status,
+    interfaced_to_lawson,
+    lawson_id,
+    sub_industry,
+    type,
+    validated,
+    founded_year,
+    region,
+    won_opportunities
+from {{ ref('stg_sfdc_account') }}
+ 

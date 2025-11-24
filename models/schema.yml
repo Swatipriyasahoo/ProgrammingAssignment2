@@ -1,0 +1,37 @@
+version: 2
+ 
+sources:
+  - name: uat-sfdc
+    database: erp_bronze_uat
+    schema: salesforce_bronze
+    tables:
+      - name: sfdc_account
+      - name: sfdc_event
+      - name: sfdc_opportunity
+ 
+models:
+  - name: dim_account
+    columns:
+      - name: account_id
+        tests:
+          - unique
+          - not_null
+ 
+  - name: fact_account
+    columns:
+      - name: account_id
+        tests:
+          - unique
+          - not_null
+          - relationships:
+              to: ref('dim_account')
+              field: account_id
+ 
+  - name: fact_opportunity
+    columns:
+      - name: account_id
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_account')
+              field: account_id

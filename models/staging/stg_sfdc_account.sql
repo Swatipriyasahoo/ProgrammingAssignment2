@@ -1,0 +1,35 @@
+SELECT
+    id as account_id,
+    name,
+    parentid as parent_id,
+    billingcity as billing_city,
+    billingstate as billing_state,
+    billingpostalcode as billing_postal_code,
+    billingcountry as billing_country,
+    billingstatecode as billing_state_code,
+    billingcountrycode as billing_country_code,
+    phone,
+    website,
+    industry,
+    numberofemployees as number_of_employees,
+    currencyisocode as currency_code,
+    ownerid as owner_id,
+    createddate as created_date,
+    createdbyid as created_by_id,
+    lastactivitydate as last_activity_date,
+    dp_salesforce_18_digit_id__c as sf_18_digit_id,
+    dp_capital_iq_id__c as capital_iq_id,
+    dp_channel__c as channel,
+    dp_client__c as client_status,
+    dp_interfaced_to_lawson__c as interfaced_to_lawson,
+    dp_lawson_id__c as lawson_id,
+    dp_sub_industry__c as sub_industry,
+    dp_type__c as type,
+    dp_validated__c as validated,
+    dp_year_founded__c as founded_year,
+    dp_region__c as region,
+    dp_won_opportunities__c as won_opportunities
+FROM {{source('uat-sfdc', 'sfdc_account')}}
+ 
+ 
+ 

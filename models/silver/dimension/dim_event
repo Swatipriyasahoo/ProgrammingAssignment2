@@ -1,0 +1,60 @@
+dim events:
+{{ config(materialized='table') }}
+ 
+select
+
+    event_id,
+
+    account_id,
+
+    who_id,
+
+    what_id,
+
+    subject,
+
+    location,
+
+    type,
+
+    is_child,
+
+    is_group_event,
+
+    group_event_type,
+
+    created_date,
+
+    created_by_id,
+
+    last_modified_date,
+
+    recurrence_type,
+
+    recurrence_interval,
+
+    recurrence_day_of_week_mask,
+
+    recurrence_day_of_month,
+
+    recurrence_month_of_year,
+
+    is_reminder_set,
+
+    event_sub_type,
+
+    account,
+
+    service_area,
+
+    sf_18_digit_id,
+
+    name_id,
+
+    digital_solution,
+
+    owner_service_line
+
+from {{ ref('stg_sfdc_event') }}
+
+ 
