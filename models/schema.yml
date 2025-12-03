@@ -1,5 +1,5 @@
 version: 2
- 
+
 sources:
   - name: uat-sfdc
     database: erp_bronze_uat
@@ -8,7 +8,7 @@ sources:
       - name: sfdc_account
       - name: sfdc_event
       - name: sfdc_opportunity
- 
+
 models:
   - name: dim_account
     columns:
@@ -16,7 +16,7 @@ models:
         tests:
           - unique
           - not_null
- 
+
   - name: fact_account
     columns:
       - name: account_id
@@ -24,14 +24,15 @@ models:
           - unique
           - not_null
           - relationships:
-              to: ref('dim_account')
-              field: account_id
- 
+              arguments:
+                to: ref('dim_account')
+                field: account_id
   - name: fact_opportunity
     columns:
       - name: account_id
         tests:
           - not_null
           - relationships:
-              to: ref('dim_account')
-              field: account_id
+              arguments:
+                to: ref('dim_account')
+                field: account_id

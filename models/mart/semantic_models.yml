@@ -1,0 +1,43 @@
+semantic_models:
+- name: account_performance
+  description: Account performance metrics including opportunities and revenue analysis.
+  model: ref('mart_account_performance')
+  defaults:
+    agg_time_dimension: fiscal_year
+  entities:
+  - name: account
+    type: primary
+    expr: account_id
+  dimensions:
+  - name: name
+    expr: account_name
+    type: categorical
+  - name: fiscal_year
+    type: time
+    type_params:
+      time_granularity: year
+  measures:
+  - name: total_opportunities
+    description: Total number of opportunities for the account.
+    agg: sum
+    create_metric: true
+  - name: won_opportunities
+    description: Total number of won opportunities for the account.
+    agg: sum
+    create_metric: true
+  - name: total_revenue
+    description: Total revenue generated from opportunities.
+    agg: sum
+    create_metric: true
+  - name: avg_deal_size
+    description: Average deal size for the account.
+    agg: average
+    create_metric: true
+  - name: win_rate
+    description: Win rate calculated as the ratio of won opportunities to total opportunities.
+    agg: average
+    create_metric: true
+  - name: count_account
+    agg: count
+    create_metric: true
+    expr: account_id
